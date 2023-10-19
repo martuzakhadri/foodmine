@@ -13,7 +13,10 @@ export class FoodPageComponent implements OnInit {
   food!: Food;
   constructor(activatedRoute: ActivatedRoute, foodservice: FoodServiceService ,private router:Router,private cart:CartService) {
     activatedRoute.params.subscribe((params) => {
-      if (params.id) this.food = foodservice.getfodbyid(params.id);
+      if (params.id)
+      foodservice.getfodbyid(params.id).subscribe(serverfood=>{
+     this.food= serverfood
+      });
     });
   }
 
