@@ -45,6 +45,9 @@ private cartSubject : BehaviorSubject<Cart> = new  BehaviorSubject(this.cart)
   getCartObservable():Observable<Cart>{
     return this.cartSubject.asObservable();
   }
+  getcart():Cart{
+    return this.cartSubject.value;
+  }
 
   private setcarttoLocalStorage():void{
     this.cart.totalPrice = this.cart.items.reduce((prevSum,currentitem)=> prevSum + currentitem.price,0)

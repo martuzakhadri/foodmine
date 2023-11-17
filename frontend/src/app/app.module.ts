@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {ReactiveFormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,13 @@ import  {ToastrModule} from 'ngx-toastr';
 import { InputContainerComponent } from './components/partials/input-container/input-container.component';
 import { InputValidationComponent } from './components/partials/input-validation/input-validation.component';
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
-import { DefaultButtonComponent } from './components/partials/default-button/default-button.component'
+import { DefaultButtonComponent } from './components/partials/default-button/default-button.component';
+import { RegisterComponent } from './components/pages/register/register.component';
+import { LoadingComponent } from './components/partials/loading/loading.component';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
+import { CheckoutComponent } from './components/pages/checkout/checkout.component';
+import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +42,11 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
     InputContainerComponent,
     InputValidationComponent,
     TextInputComponent,
-    DefaultButtonComponent
+    DefaultButtonComponent,
+    RegisterComponent,
+    LoadingComponent,
+    CheckoutComponent,
+    OrderItemsListComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +63,7 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
     
     
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:LoadingInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
