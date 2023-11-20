@@ -26,6 +26,7 @@ import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 import { CheckoutComponent } from './components/pages/checkout/checkout.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { MapComponent } from './components/partials/map/map.component';
+import { PaypalComponent } from './components/partials/paypal/paypal.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MapComponent } from './components/partials/map/map.component';
     LoadingComponent,
     CheckoutComponent,
     OrderItemsListComponent,
-    MapComponent
+    MapComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
